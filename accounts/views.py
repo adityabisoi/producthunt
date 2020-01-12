@@ -14,12 +14,21 @@ def signup(request):
                 return redirect('home')
         else:
             return render(request,'accounts/signup.html',{'perror':'Passwords do not match'})
-
     else:
         return render(request,'accounts/signup.html')
 
 def login(request):
-    return render(request,'accounts/login.html')
+    if request.method == 'POST':
+        user = auth.authenticate(username=request.POST['uname'], password=request.POST['pass'])
+        if user is not None:
+            auth.login(request, user)
+            return redirect('home')
+        else:
+            return render(request,'accounts/login.html',{'error':'Incorrect username or password'})
+    else:
+        return render(request,'accounts/login.html')
 
 def logout(request):
-    return render(request,'accounts/signup.html')
+    if request.method == 'POST':
+        auth.logout(request)
+        return redirect('home')
