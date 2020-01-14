@@ -62,10 +62,11 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         {% if user.is_authenticated %}
-                        <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}" onclick="">Logout</a>
+                        <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}"
+                            onclick="">Logout</a>
                         <form id="logout" action="{% url 'logout' %}" method="POST">
-                             {% csrf_token %}
-                             <input type="hidden">
+                            {% csrf_token %}
+                            <input type="hidden">
                         </form>
                         {% else %}
                         <a class="nav-item nav-link" href="{% url 'signup' %}">Sign Up</a>
@@ -85,7 +86,9 @@
 
     <footer class="text-muted">
         <div class="container text-center">
-            <p>© Aditya Bisoi {% now "Y" %}</p>
+            <div class="fixed-bottom">
+                <p>© Aditya Bisoi {% now "Y" %}</p>
+            </div>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

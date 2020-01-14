@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Products(models.Model):
     title = models.CharField(max_length=15)
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField()
     votes = models.IntegerField(default=1)
     body = models.TextField()
     url = models.TextField()
